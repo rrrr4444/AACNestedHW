@@ -27,7 +27,6 @@ public class AACMappings {
             int split_on = row.indexOf(' ') + 1;
             String imagePath = row.substring(0, split_on);
             String text = row.substring(split_on, row.length());
-            // TODO: If always is false
             if (!row.contains(">")) {
                 category = text;
                 try {
