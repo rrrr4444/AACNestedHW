@@ -1,13 +1,13 @@
-import javax.swing.JFrame; 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton; 
+import javax.swing.JButton;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout; 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,16 +19,16 @@ import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
 
 /**
- * Creates a GUI that has a grid of images that represent the 
+ * Creates a GUI that has a grid of images that represent the
  * communication device of the AAC.
- * 
+ *
  * @author Catie Baker
  *
  */
 public class AAC implements ActionListener {
 
-	private JFrame frame; 
-	//private JButton[][] grid; 
+	private JFrame frame;
+	//private JButton[][] grid;
 	private static Synthesizer synthesizer;
 	private int startIndex;
 	private int endIndex;
@@ -41,10 +41,10 @@ public class AAC implements ActionListener {
 
 	/**
 	 * Creates the AAC display for the file provided
-	 * @param filename the name of the file that contains the 
+	 * @param filename the name of the file that contains the
 	 * images and text that will be in the AAC
 	 */
-	public AAC(String filename){ 
+	public AAC(String filename){
 		this.aacMappings = new AACMappings(filename);
 		this.images = this.aacMappings.getImageLocs();
 		this.startIndex = 0;
@@ -53,7 +53,7 @@ public class AAC implements ActionListener {
 		frame.setPreferredSize(new Dimension(500,500));
 		loadImages(NUM_ACROSS,NUM_DOWN);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack(); 
+		frame.pack();
 		frame.setVisible(true);
 		input = new Scanner(System.in);
 	}
@@ -97,7 +97,7 @@ public class AAC implements ActionListener {
 
 		//add images
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(width,length)); 
+		panel.setLayout(new GridLayout(width,length));
 		int currImage = startIndex;
 		for(int y=0; y<length; y++){
 			for(int x=0; x<width; x++){
@@ -106,7 +106,7 @@ public class AAC implements ActionListener {
 					JButton button = new JButton(img);
 					button.setActionCommand(images[currImage]);
 					button.addActionListener(this);
-					panel.add(button); 
+					panel.add(button);
 					currImage++;
 
 				}
