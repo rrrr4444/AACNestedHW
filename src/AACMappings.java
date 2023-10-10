@@ -39,7 +39,7 @@ public class AACMappings {
 
     public String[] getImageLocs() {
         return new String[] { "img/food/icons8-french-fries-96.png", "img/food/icons8-watermelon-96.png" };
-    }
+    } // String[] getImageLocs()
 
     public void writeToFile(String string) throws IOException {
         ArrayList<String> textLines = new ArrayList<>();
@@ -55,15 +55,15 @@ public class AACMappings {
 
     public void reset() {
         this.currentCategory = defaultCategory;
-    }
+    } // void reset()
 
     public void add(String imageLoc, String text) throws Exception {
         this.mappings.set(imageLoc, new String[]{this.currentCategory, text});
-    }
+    } // void add(String imageLoc, String text)
 
     public String getCurrentCategory() {
         return this.currentCategory;
-    }
+    } // String getCurrentCategory()
 
     public String getText(String imageLoc) throws Exception {
         String[] entry = this.mappings.get(imageLoc);
@@ -75,6 +75,6 @@ public class AACMappings {
             this.currentCategory = text;
         } // if
         return text;
-    }
+    } // String getText(String imageLoc)
 
-}
+} // class AACMappings
