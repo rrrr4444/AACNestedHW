@@ -20,9 +20,10 @@ public class AACMappings {
             e.printStackTrace();
             throw new RuntimeException("Reading mapping file failed");
         } // try/catch
-        String[] rows = file.trim().split("/n");
+        String[] rows = file.trim().split("\n");
         String category = null;
-        for (String row: rows) {
+        for (int i = 0; i < rows.length; i++) {
+            String row = rows[i];
             int split_on = row.indexOf(' ') + 1;
             String imagePath = row.substring(0, split_on);
             String text = row.substring(split_on, row.length());
@@ -37,7 +38,7 @@ public class AACMappings {
                 }
             } else {
                 try {
-                    mappings.set(imagePath.substring(1, imagePath.length()),
+                    mappings.set(imagePath.substring(1, imagePath.length() - 1),
                         new String[]{category, text});
                 } catch (Exception e) {
                     e.printStackTrace();
