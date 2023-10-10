@@ -1,6 +1,7 @@
 package structures;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * A basic implementation of Associative Arrays with keys of type K
@@ -194,7 +195,7 @@ public class AssociativeArray<K, V> {
    * Return all pairs.
    */
   public KVPair<K, V>[] all() {
-    return this.pairs;
+    return Arrays.copyOfRange(this.pairs, 0, this.size);
   } // KVPair<K, V>[] all()
 
 } // class structures.AssociativeArray

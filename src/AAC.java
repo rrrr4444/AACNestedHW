@@ -43,9 +43,8 @@ public class AAC implements ActionListener {
 	 * Creates the AAC display for the file provided
 	 * @param filename the name of the file that contains the
 	 * images and text that will be in the AAC
-	 * @throws Exception
 	 */
-	public AAC(String filename) throws Exception{
+	public AAC(String filename) {
 		this.aacMappings = new AACMappings(filename);
 		this.images = this.aacMappings.getImageLocs();
 		this.startIndex = 0;
@@ -129,7 +128,7 @@ public class AAC implements ActionListener {
 		pane.requestFocusInWindow();
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 
 		try {
 			// Set property as Kevin Dictionary
