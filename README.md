@@ -1,4 +1,4 @@
-October 8th, 2023
+October 12th, 2023
 
 Data Structures
 
@@ -8,5 +8,5 @@ Description: This is a java program to support Augmentative and Alternative Comm
 
 Additional resources:
     - https://accessibilityeducation.github.io/assignments/AAC/AAC.html
-    
+
     - https://docs.oracle.com/javase/tutorial/java/data/converting.html
