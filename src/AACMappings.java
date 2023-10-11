@@ -30,19 +30,19 @@ public class AACMappings {
             if (!row.contains(">")) {
                 category = text;
                 try {
-                    mappings.set(imagePath, new String[]{null, text});
+                    mappings.set(imagePath, new String[] { null, text });
                 } catch (Exception e) {
                     e.printStackTrace();
                     throw new RuntimeException("Setting mapping failed");
-                }
+                } // try
             } else {
                 try {
                     mappings.set(imagePath.substring(1, imagePath.length() - 1),
-                        new String[]{category, text});
+                            new String[] { category, text });
                 } catch (Exception e) {
                     e.printStackTrace();
                     throw new RuntimeException("Setting mapping failed");
-                }
+                } // try
             } // if
         } // for
     } // AACMappings(String filename) throws RuntimeException
@@ -50,7 +50,7 @@ public class AACMappings {
     public String[] getImageLocs() {
         ArrayList<String> locationsList = new ArrayList<>();
         KVPair<String, String[]>[] entries = this.mappings.all();
-        for (KVPair<String, String[]> entry: entries) {
+        for (KVPair<String, String[]> entry : entries) {
             if (entry.value[0] == this.currentCategory) {
                 locationsList.add(entry.key);
             }
@@ -61,7 +61,7 @@ public class AACMappings {
 
     public void writeToFile(String filename) {
         ArrayList<String> textLines = new ArrayList<>();
-        for (KVPair<String, String[]> pair: this.mappings.all()) {
+        for (KVPair<String, String[]> pair : this.mappings.all()) {
             if (pair.value[0] == null) {
                 textLines.add(pair.key + " " + pair.value[1]);
             } else {
@@ -73,7 +73,7 @@ public class AACMappings {
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Writing mapping failed");
-        }
+        } // try
     } // void writeToFile(String string)
 
     public void reset() {
@@ -82,11 +82,11 @@ public class AACMappings {
 
     public void add(String imageLoc, String text) {
         try {
-            this.mappings.set(imageLoc, new String[]{this.currentCategory, text});
+            this.mappings.set(imageLoc, new String[] { this.currentCategory, text });
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Set mapping failed");
-        }
+        } // try
     } // void add(String imageLoc, String text)
 
     public String getCurrentCategory() {
@@ -103,7 +103,7 @@ public class AACMappings {
         } // try
         String category = entry[0];
         String text = entry[1];
-            this.currentCategory = category;
+        this.currentCategory = category;
         if (category == null) {
             // If the entry is a category itself
             this.currentCategory = text;
