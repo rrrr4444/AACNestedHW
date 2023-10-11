@@ -1,5 +1,6 @@
 import structures.AssociativeArray;
 import structures.KVPair;
+import structures.KeyNotFoundException;
 
 public class AACCategory {
   String category;
@@ -9,7 +10,7 @@ public class AACCategory {
     this.category = name;
   } // AACCategory(String name)
 
-  public void addItem​(String imageLoc, String text) throws Exception{
+  public void addItem(String imageLoc, String text) {
     this.mapping.set(imageLoc, text);
   } // void addItem​(String imageLoc, String text)
 
@@ -17,15 +18,19 @@ public class AACCategory {
     return this.category;
   } // String getCategory()
 
-  public String getText​(String imageLoc) throws Exception{
-    return this.mapping.get(imageLoc);
+  public String getText(String imageLoc) {
+    try {
+      return this.mapping.get(imageLoc);
+    } catch (KeyNotFoundException e) {
+      return null;
+    } // try/catch
   } // String getText​(String imageLoc)
 
-  public boolean hasImage​(String imageLoc) throws Exception{
+  public boolean hasImage(String imageLoc) {
     return this.mapping.hasKey(imageLoc);
   } // boolean hasImage​(String imageLoc)
 
-  public String[] getImages(){
+  public String[] getImages() {
     KVPair<String, String>[] pairs = this.mapping.all();
     String[] imageLocs = new String[pairs.length];
     for (int i = 0; i < imageLocs.length; i++) {
