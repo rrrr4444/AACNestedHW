@@ -2,6 +2,10 @@ import structures.AssociativeArray;
 import structures.KVPair;
 import structures.KeyNotFoundException;
 
+/**
+ * Stores a category of images for AACMappings.
+ * @author Reed Colloton
+ */
 public class AACCategory {
   String category;
   AssociativeArray<String, String> mapping = new AssociativeArray<>();
