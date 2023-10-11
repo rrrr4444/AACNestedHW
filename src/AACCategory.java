@@ -14,7 +14,7 @@ public class AACCategory {
     this.mapping.set(imageLoc, text);
   } // void addItem​(String imageLoc, String text)
 
-  public String getCategory(){
+  public String getCategory() {
     return this.category;
   } // String getCategory()
 

@@ -1,15 +1,16 @@
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import structures.AssociativeArray;
+import structures.KVPair;
 import structures.KeyNotFoundException;
 
 public class AACMappings {
-  AssociativeArray<String, String> images = new AssociativeArray<>();
   AssociativeArray<String, AACCategory> categories = new AssociativeArray<>();
-  AACCategory homeCategory;
+  AACCategory homeCategory = new AACCategory("");
   AACCategory currentCategory;
 
   public AACMappings(String filename) {
@@ -21,7 +22,6 @@ public class AACMappings {
       throw new RuntimeException("Reading mappings file failed.");
     } // try/catch
     String[] rows = file.trim().split("\n");
-    this.homeCategory = new AACCategory("home");
     for (String row: rows) {
       int splitOn = row.indexOf(' ');
       String imagePath = row.substring(0, splitOn);
@@ -44,7 +44,19 @@ public class AACMappings {
   } // String[] getImageLocs()
 
   public void writeToFile(String filename) {
-    // TODO
+    ArrayList<String> lines = new ArrayList<>();
+    for (KVPair<String, AACCategory> categoryPair: this.categories.all()) {
+      lines.add(categoryPair.key + " " + categoryPair.value.getCategory());
+      for (String imageLoc: categoryPair.value.getImages()) {
+        lines.add(">" + imageLoc + " " + categoryPair.value.getText(imageLoc));
+      } // for
+    } // for
+    try {
+      Files.write(Path.of(filename), lines, StandardCharsets.UTF_8);
+    } catch (IOException e) {
+      e.printStackTrace();
+      throw new RuntimeException("Reading mappings file failed.");
+    } // try/catch
   } // void writeToFile(String string)
 
   public void reset() {
@@ -53,22 +65,26 @@ public class AACMappings {
 
   public void add(String imageLoc, String text) {
     this.currentCategory.addItem(imageLoc, text);
+    if (this.currentCategory.equals(this.homeCategory)) {
+        this.categories.set(imageLoc, new AACCategory(text));
+    } // if
   } // void add(String imageLoc, String text)
 
   public String getCurrentCategory() {
     return this.currentCategory.getCategory();
   } // String getCurrentCategory()
 
-  public boolean isCategory​(String imageLoc) {
+  public boolean isCategory(String imageLoc) {
     return categories.hasKey(imageLoc);
   } // boolean isCategory​(String imageLoc)
 
   public String getText(String imageLoc) {
     String text = this.currentCategory.getText(imageLoc);
     try {
-      this.currentCategory = categories.get(imageLoc);
-    } catch (KeyNotFoundException e) {}
-      return text;
+      this.currentCategory = this.categories.get(imageLoc);
+    } catch (KeyNotFoundException e) {
+    } // try/catch
+    return text;
   } // String getText(String imageLoc)
 
 } // class AACmapping
