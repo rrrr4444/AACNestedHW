@@ -1,4 +1,4 @@
-img/food/plate.png  food
+img/food/plate.png food
 >img/food/icons8-french-fries-96.png french fries
 >img/food/icons8-watermelon-96.png watermelon
 >img/food/icons8-apple-96.png apple
@@ -6,7 +6,7 @@ img/food/plate.png  food
 >img/food/icons8-strawberry-96.png strawberry
 >img/food/icons8-pizza-96.png pizza
 >img/food/icons8-hamburger-96.png hamburger
-img/clothing/hanger.png  clothing
+img/clothing/hanger.png clothing
 >img/clothing/collaredshirt.png collared shirt
 >img/clothing/sweater.png sweater
 >img/clothing/skirt.png skirt
