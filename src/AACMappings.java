@@ -59,7 +59,7 @@ public class AACMappings {
       Files.write(Path.of(filename), lines, StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
-      throw new RuntimeException("Reading mappings file failed.");
+      throw new RuntimeException("Writing new mappings file failed.");
     } // try/catch
   } // void writeToFile(String string)
 
